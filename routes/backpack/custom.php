@@ -22,6 +22,8 @@ Route::group([
     Route::crud('document-category', 'DocumentCategoryCrudController');
     Route::crud('documents', 'DocumentsCrudController');
     Route::crud('calendar', 'CalendarCrudController');
+    Route::crud('role', 'RoleCrudController');
+    Route::crud('permission', 'PermissionCrudController');
 }); // this should be the absolute last line of this file
 
 /**

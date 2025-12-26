@@ -68,11 +68,12 @@ class UserCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
+        if (backpack_user()->can('update roles')) {
         CRUD::setValidation(UserRequest::class);
         CRUD::setFromDb(); // set fields from db columns.
-
-        CRUD::field('roles')->label('Funções')->type('checklist')->entity('roles')->attribute('name')->model('Backpack\PermissionManager\app\Models\Role')->pivot(true);
-        CRUD::field('permissions')->label('Permissões Extras')->type('checklist')->entity('permissions')->attribute('name')->model('Backpack\PermissionManager\app\Models\Permission')->pivot(true);
+            CRUD::field('roles')->label('Funções')->type('checklist')->entity('roles')->attribute('name')->model('App\Models\Role')->pivot(true);
+            CRUD::field('permissions')->label('Permissões Extras')->type('checklist')->entity('permissions')->attribute('name')->model('App\Models\Permission')->pivot(true);
+        }
     }
 
     /**
