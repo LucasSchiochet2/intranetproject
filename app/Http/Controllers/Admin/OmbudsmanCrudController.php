@@ -29,6 +29,19 @@ class OmbudsmanCrudController extends CrudController
         CRUD::setModel(\App\Models\Ombudsman::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/ombudsman');
         CRUD::setEntityNameStrings('ombudsman', 'ombudsmen');
+
+        if (!backpack_user()->can('list ombudsman')) {
+            CRUD::denyAccess(['list', 'show']);
+        }
+        if (!backpack_user()->can('create ombudsman')) {
+            CRUD::denyAccess(['create']);
+        }
+        if (!backpack_user()->can('update ombudsman')) {
+            CRUD::denyAccess(['update']);
+        }
+        if (!backpack_user()->can('delete ombudsman')) {
+            CRUD::denyAccess(['delete']);
+        }
     }
 
     /**

@@ -29,6 +29,19 @@ class CalendarCrudController extends CrudController
         CRUD::setModel(\App\Models\Calendar::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/calendar');
         CRUD::setEntityNameStrings('calendar', 'calendars');
+
+        if (!backpack_user()->can('list calendar')) {
+            CRUD::denyAccess(['list', 'show']);
+        }
+        if (!backpack_user()->can('create calendar')) {
+            CRUD::denyAccess(['create']);
+        }
+        if (!backpack_user()->can('update calendar')) {
+            CRUD::denyAccess(['update']);
+        }
+        if (!backpack_user()->can('delete calendar')) {
+            CRUD::denyAccess(['delete']);
+        }
     }
 
     /**

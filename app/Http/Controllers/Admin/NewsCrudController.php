@@ -29,6 +29,19 @@ class NewsCrudController extends CrudController
         CRUD::setModel(\App\Models\News::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/news');
         CRUD::setEntityNameStrings('news', 'news');
+
+        if (!backpack_user()->can('list news')) {
+            CRUD::denyAccess(['list', 'show']);
+        }
+        if (!backpack_user()->can('create news')) {
+            CRUD::denyAccess(['create']);
+        }
+        if (!backpack_user()->can('update news')) {
+            CRUD::denyAccess(['update']);
+        }
+        if (!backpack_user()->can('delete news')) {
+            CRUD::denyAccess(['delete']);
+        }
     }
 
     /**

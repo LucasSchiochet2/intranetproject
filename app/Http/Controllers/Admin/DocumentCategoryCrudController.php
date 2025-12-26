@@ -29,6 +29,19 @@ class DocumentCategoryCrudController extends CrudController
         CRUD::setModel(\App\Models\DocumentCategory::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/document-category');
         CRUD::setEntityNameStrings('document category', 'document categories');
+
+        if (!backpack_user()->can('list document_categories')) {
+            CRUD::denyAccess(['list', 'show']);
+        }
+        if (!backpack_user()->can('create document_categories')) {
+            CRUD::denyAccess(['create']);
+        }
+        if (!backpack_user()->can('update document_categories')) {
+            CRUD::denyAccess(['update']);
+        }
+        if (!backpack_user()->can('delete document_categories')) {
+            CRUD::denyAccess(['delete']);
+        }
     }
 
     /**

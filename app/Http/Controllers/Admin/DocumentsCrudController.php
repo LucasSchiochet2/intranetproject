@@ -29,6 +29,19 @@ class DocumentsCrudController extends CrudController
         CRUD::setModel(\App\Models\Documents::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/documents');
         CRUD::setEntityNameStrings('documents', 'documents');
+
+        if (!backpack_user()->can('list documents')) {
+            CRUD::denyAccess(['list', 'show']);
+        }
+        if (!backpack_user()->can('create documents')) {
+            CRUD::denyAccess(['create']);
+        }
+        if (!backpack_user()->can('update documents')) {
+            CRUD::denyAccess(['update']);
+        }
+        if (!backpack_user()->can('delete documents')) {
+            CRUD::denyAccess(['delete']);
+        }
     }
 
     /**
