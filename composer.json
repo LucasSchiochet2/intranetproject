@@ -11,6 +11,7 @@
     "require": {
         "php": "^8.2",
         "backpack/crud": "7.0",
+        "backpack/menucrud": "*",
         "backpack/permissionmanager": "^7.3",
         "backpack/theme-coreuiv4": "^1.2",
         "laravel/fortify": "^1.32",
