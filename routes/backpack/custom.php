@@ -24,6 +24,7 @@ Route::group([
     Route::crud('calendar', 'CalendarCrudController');
     Route::crud('role', 'RoleCrudController');
     Route::crud('permission', 'PermissionCrudController');
+    Route::crud('tenant', 'TenantCrudController');
 }); // this should be the absolute last line of this file
 
 /**

@@ -6,11 +6,13 @@ use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use App\Traits\BelongsToTenant;
 
 class Ombudsman extends Model
 {
     use CrudTrait;
     use HasFactory;
+    use BelongsToTenant;
 
     protected $fillable = [
         'user_id',

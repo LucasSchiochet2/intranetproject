@@ -5,11 +5,13 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\BelongsToTenant;
 
 class Documents extends Model
 {
     use CrudTrait;
     use HasFactory;
+    use BelongsToTenant;
 
     protected $fillable = ['document_category_id', 'title', 'description', 'files'];
 

@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\URL;
 use Laravel\Fortify\Fortify;
+use App\Services\TenantManager;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +15,10 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         Fortify::ignoreRoutes();
+
+        $this->app->singleton(TenantManager::class, function ($app) {
+            return new TenantManager();
+        });
     }
 
     /**
