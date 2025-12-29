@@ -6,6 +6,8 @@
     <x-backpack::menu-item title="Usuários" icon="la la-user" :link="backpack_url('user')" />
 @endcan
 
+<x-backpack::menu-item title="Colaboradores" icon="la la-users" :link="backpack_url('collaborators')" />
+
 @can('list news')
     <x-backpack::menu-item title="Notícias" icon="la la-newspaper" :link="backpack_url('news')" />
 @endcan

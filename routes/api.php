@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\DocumentsController;
 use App\Http\Controllers\Api\PageController;
 use App\Http\Controllers\Api\OmbudsmanController;
 use App\Http\Controllers\Api\MenuController;
+use App\Http\Controllers\Api\CollaboratorAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +42,7 @@ Route::get('/menu', [MenuController::class, 'index']);
 
 // Public POST route for Ombudsman
 Route::post('/ombudsman', [OmbudsmanController::class, 'store']);
+
+// Public POST route for Collaborator Login
+Route::post('/login', [CollaboratorAuthController::class, 'login']);
+
