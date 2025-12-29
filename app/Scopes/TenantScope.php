@@ -34,6 +34,10 @@ class TenantScope implements Scope
             if ($model instanceof \App\Models\User) {
                 $builder->whereNull($model->getTable() . '.tenant_id');
             }
+            // If we are NOT in the admin panel (e.g. API or Public Site), restrict content to Global only
+            elseif (!request()->is('admin/*') && !app()->runningInConsole()) {
+                 $builder->whereNull($model->getTable() . '.tenant_id');
+            }
         }
     }
 }

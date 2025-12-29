@@ -15,6 +15,9 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->web(append: [
             \App\Http\Middleware\CheckTenant::class,
         ]);
+        $middleware->api(append: [
+            \App\Http\Middleware\CheckTenant::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
