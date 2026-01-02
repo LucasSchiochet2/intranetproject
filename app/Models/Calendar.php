@@ -18,7 +18,7 @@ class Calendar extends Model
         'description',
         'start_date',
         'end_date',
-        'user_id',
+        'collaborator_id',
     ];
 
     protected $casts = [
@@ -29,5 +29,9 @@ class Calendar extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function collaborator()
+    {
+        return $this->belongsTo(Collaborators::class);
     }
 }

@@ -30,6 +30,7 @@ Route::get('/news', [NewsController::class, 'index']);
 Route::get('/news/{slug}', [NewsController::class, 'show']);
 
 Route::get('/calendar', [CalendarController::class, 'index']);
+Route::get('/calendar/upcoming', [CalendarController::class, 'upcoming']);
 Route::get('/calendar/{id}', [CalendarController::class, 'show']);
 
 Route::get('/documents', [DocumentsController::class, 'index']);

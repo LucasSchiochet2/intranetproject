@@ -10,12 +10,15 @@ class CalendarController extends Controller
 {
     public function index()
     {
-        return response()->json(Calendar::orderBy('start_date', 'desc')->paginate(20));
+        return response()->json(Calendar::with('collaborator:id,name')->orderBy('start_date', 'asc')->paginate(20));
     }
-
+    public function upcoming()
+    {
+        return response()->json(Calendar::with('collaborator:id,name')->where('start_date', '>=', now('GMT-3'))->orderBy('start_date', 'asc')->get());
+    }
     public function show($id)
     {
-        $calendar = Calendar::find($id);
+        $calendar = Calendar::with('collaborator:id,name')->find($id);
 
         if (!$calendar) {
             return response()->json(['message' => 'Not found'], 404);

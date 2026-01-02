@@ -29,6 +29,7 @@ class CalendarRequest extends FormRequest
             'start_date' => 'required|date',
             'end_date' => 'nullable|date|after_or_equal:start_date',
             'user_id' => 'nullable|exists:users,id',
+            'collaborator_id' => 'nullable|exists:users,id',
             'description' => 'nullable',
         ];
     }
@@ -45,6 +46,7 @@ class CalendarRequest extends FormRequest
             'start_date' => 'data de início',
             'end_date' => 'data de fim',
             'user_id' => 'usuário',
+            'collaborator_id' => 'colaborador',
             'description' => 'descrição',
         ];
     }

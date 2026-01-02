@@ -53,9 +53,9 @@ class CalendarCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('title')->label('Título');
-        CRUD::column('start_date')->label('Início')->type('date');
-        CRUD::column('end_date')->label('Fim')->type('date');
-        CRUD::column('user')->label('Usuário');
+        CRUD::column('start_date')->label('Início')->type('datetime');
+        CRUD::column('end_date')->label('Fim')->type('datetime');
+        CRUD::column('collaborator')->label('Colaborador');
     }
 
     /**
@@ -70,9 +70,9 @@ class CalendarCrudController extends CrudController
 
         CRUD::field('title')->label('Título');
         CRUD::field('description')->label('Descrição')->type('textarea');
-        CRUD::field('start_date')->label('Data de Início')->type('date');
-        CRUD::field('end_date')->label('Data de Fim')->type('date');
-        CRUD::field('user_id')->label('Usuário')->type('select')->entity('user')->attribute('name')->model('App\Models\User');
+        CRUD::field('start_date')->label('Data de Início')->type('datetime');
+        CRUD::field('end_date')->label('Data de Fim')->type('datetime');
+        CRUD::field('collaborator_id')->label('Colaborador')->type('select')->entity('collaborator')->attribute('name')->model('App\Models\Collaborators');
     }
 
     /**
