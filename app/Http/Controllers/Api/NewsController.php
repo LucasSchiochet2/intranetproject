@@ -10,12 +10,12 @@ class NewsController extends Controller
 {
     public function index()
     {
-        return response()->json(News::latest()->paginate(10));
+        return response()->json(News::OrderBy('published_at', 'desc')->paginate(10));
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $news = News::find($id);
+        $news = News::where('slug', $slug)->first();
 
         if (!$news) {
             return response()->json(['message' => 'Not found'], 404);

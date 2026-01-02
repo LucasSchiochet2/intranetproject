@@ -27,7 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // Public GET routes
 Route::get('/news', [NewsController::class, 'index']);
-Route::get('/news/{id}', [NewsController::class, 'show']);
+Route::get('/news/{slug}', [NewsController::class, 'show']);
 
 Route::get('/calendar', [CalendarController::class, 'index']);
 Route::get('/calendar/{id}', [CalendarController::class, 'show']);
