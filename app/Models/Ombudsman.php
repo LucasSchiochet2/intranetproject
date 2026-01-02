@@ -24,6 +24,7 @@ class Ombudsman extends Model
         'status',
         'admin_notes',
         'attachment',
+        'admin_attachment',
         'response_token',
         'resolved_at',
     ];
@@ -51,6 +52,16 @@ class Ombudsman extends Model
     public function setAttachmentAttribute($value)
     {
         $attribute_name = "attachment";
+        // Usa o disco padrão definido no .env (FILESYSTEM_DISK). 
+        // Em dev pode ser 'public', em prod pode ser 's3' ou 'r2'.
+        $disk = config('filesystems.default'); 
+        $destination_path = "uploads/ombudsman";
+
+        $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path);
+    }
+    public function setAdminAttachmentAttribute($value)
+    {
+        $attribute_name = "admin_attachment";
         // Usa o disco padrão definido no .env (FILESYSTEM_DISK). 
         // Em dev pode ser 'public', em prod pode ser 's3' ou 'r2'.
         $disk = config('filesystems.default'); 

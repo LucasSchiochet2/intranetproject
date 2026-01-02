@@ -93,11 +93,12 @@ class OmbudsmanCrudController extends CrudController
         CRUD::field('type')->label('Tipo')->attributes(['readonly' => 'readonly', 'disabled' => 'disabled']);
         CRUD::field('subject')->label('Assunto')->attributes(['readonly' => 'readonly', 'disabled' => 'disabled']);
         CRUD::field('message')->label('Mensagem')->type('textarea')->attributes(['readonly' => 'readonly', 'disabled' => 'disabled']);
-        CRUD::field('attachment')->label('Anexo')->type('upload')->upload(true)->attributes(['readonly' => 'readonly', 'disabled' => 'disabled']);
+        CRUD::field('attachment')->label('Anexo')->attributes(['readonly' => 'readonly', 'disabled' => 'disabled']);
 
         // Campos editáveis
         CRUD::field('status')->label('Status')->type('select_from_array')->options(['open' => 'Aberto', 'in_progress' => 'Em Andamento', 'resolved' => 'Resolvido']);
         CRUD::field('admin_notes')->label('Anotações da Administração')->type('textarea');
+        CRUD::field('admin_attachment')->label('Anexo da Administração')->type('upload')->upload(true);
         CRUD::field('resolved_at')->label('Resolvido em')->type('date');
     }
 }

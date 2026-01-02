@@ -12,7 +12,7 @@ class OmbudsmanController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
+            'name' => 'nullable|string|max:255',
             'email' => 'required|email|max:255',
             'type' => 'required|string|max:50',
             'subject' => 'required|string|max:255',
@@ -40,5 +40,16 @@ class OmbudsmanController extends Controller
             'data' => $ombudsman,
             'token' => $ombudsman->response_token
         ], 201);
+    }
+
+    public function show($response_token)
+    {
+        $ombudsman = Ombudsman::where('response_token', $response_token)->first();
+
+        if (!$ombudsman) {
+            return response()->json(['message' => 'Ombudsman request not found'], 404);
+        }
+
+        return response()->json($ombudsman);
     }
 }

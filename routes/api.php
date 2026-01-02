@@ -41,8 +41,11 @@ Route::get('/pages/{slug}', [PageController::class, 'show']);
 Route::get('/menu', [MenuController::class, 'index']);
 
 // Public POST route for Ombudsman
-Route::post('/ombudsman', [OmbudsmanController::class, 'store']);
+Route::middleware(['frontend.only'])->group(function () {
+    Route::post('/ombudsman', [OmbudsmanController::class, 'store']);
 
+});
+    Route::get('/ombudsman/{response_token}', [OmbudsmanController::class, 'show']);
 // Public POST route for Collaborator Login
 Route::post('/login', [CollaboratorAuthController::class, 'login']);
 
