@@ -50,3 +50,5 @@ Route::middleware(['frontend.only'])->group(function () {
 // Public POST route for Collaborator Login
 Route::post('/login', [CollaboratorAuthController::class, 'login']);
 Route::get('/birthdays', [CollaboratorAuthController::class, 'birthdays']);
+Route::get('/banners', [App\Http\Controllers\Api\BannerController::class, 'index']);
+Route::get('/banners/{id}', [App\Http\Controllers\Api\BannerController::class, 'show']);

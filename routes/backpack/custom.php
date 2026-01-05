@@ -27,6 +27,7 @@ Route::group([
     Route::crud('tenant', 'TenantCrudController');
     Route::crud('menu-item', 'MenuItemCrudController');
     Route::crud('collaborators', 'CollaboratorsCrudController');
+    Route::crud('banner', 'BannerCrudController');
 }); // this should be the absolute last line of this file
 
 /**

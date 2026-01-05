@@ -26,6 +26,8 @@
 
 <x-backpack::menu-item title="Páginas" icon="la la-file" :link="backpack_url('page')" />
 
+<x-backpack::menu-item title="Banners" icon="la la-image" :link="backpack_url('banner')" />
+
 @can('list document_categories')
     <x-backpack::menu-dropdown title="Categorias" icon="la la-tags">
         <x-backpack::menu-item title="Categorias de Documentos" icon="la la-folder"
@@ -44,3 +46,4 @@
     <x-backpack::menu-item title="Menu Manager" icon="la la-list" :link="backpack_url('menu-item')" />
 </x-backpack::menu-dropdown>
 {{-- Menu Manager --}}
+
