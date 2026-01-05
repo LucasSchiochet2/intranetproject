@@ -29,4 +29,14 @@ class CollaboratorAuthController extends Controller
             'collaborator' => $collaborator,
         ]);
     }
+    public function birthdays()
+    {
+        $today = date('m-d');
+
+        $collaboratorsWithBirthdayList = Collaborators::whereNotNull('birth_date')->get(['name', 'birth_date','url_photo']);
+
+        return response()->json([
+            'birthdays' => $collaboratorsWithBirthdayList->values(),
+        ]);
+    }
 }

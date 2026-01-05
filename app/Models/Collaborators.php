@@ -11,7 +11,7 @@ class Collaborators extends Authenticatable
 {
     use CrudTrait;
     use HasFactory, Notifiable;
-    
+
     protected $table = 'collaborators';
 
     protected $fillable = [
@@ -20,6 +20,8 @@ class Collaborators extends Authenticatable
         'password',
         'position',
         'department',
+        'birth_date',
+        'url_photo',
     ];
 
     public function setPasswordAttribute($value)
@@ -27,5 +29,15 @@ class Collaborators extends Authenticatable
         if ($value) {
             $this->attributes['password'] = bcrypt($value);
         }
+    }
+    public function setUrlPhotoAttribute($value)
+    {
+        $attribute_name = "url_photo";
+        // Usa o disco padrão definido no .env (FILESYSTEM_DISK).
+        // Em dev pode ser 'public', em prod pode ser 's3' ou 'r2'.
+        $disk = config('filesystems.default');
+        $destination_path = "uploads/collaborators";
+
+        $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path);
     }
 }

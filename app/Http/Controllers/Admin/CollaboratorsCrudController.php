@@ -21,7 +21,7 @@ class CollaboratorsCrudController extends CrudController
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
-     * 
+     *
      * @return void
      */
     public function setup()
@@ -33,7 +33,7 @@ class CollaboratorsCrudController extends CrudController
 
     /**
      * Define what happens when the List operation is loaded.
-     * 
+     *
      * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
      * @return void
      */
@@ -47,7 +47,7 @@ class CollaboratorsCrudController extends CrudController
 
     /**
      * Define what happens when the Create operation is loaded.
-     * 
+     *
      * @see https://backpackforlaravel.com/docs/crud-operation-create
      * @return void
      */
@@ -60,11 +60,13 @@ class CollaboratorsCrudController extends CrudController
         CRUD::field('password')->label('Senha')->type('password');
         CRUD::field('position')->label('Cargo');
         CRUD::field('department')->label('Departamento');
+        CRUD::field('birth_date')->label('Data de Nascimento')->type('date');
+        CRUD::field('url_photo')->label('Foto')->type('upload')->upload(true);
     }
 
     /**
      * Define what happens when the Update operation is loaded.
-     * 
+     *
      * @see https://backpackforlaravel.com/docs/crud-operation-update
      * @return void
      */

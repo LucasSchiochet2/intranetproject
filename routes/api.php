@@ -49,4 +49,4 @@ Route::middleware(['frontend.only'])->group(function () {
     Route::get('/ombudsman/{response_token}', [OmbudsmanController::class, 'show']);
 // Public POST route for Collaborator Login
 Route::post('/login', [CollaboratorAuthController::class, 'login']);
-
+Route::get('/birthdays', [CollaboratorAuthController::class, 'birthdays']);
