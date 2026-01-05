@@ -23,4 +23,39 @@ class DocumentsController extends Controller
 
         return response()->json($document);
     }
+
+    public function show_by_category($category)
+    {
+        $documents = Documents::with('category')
+            ->whereHas('category', function ($query) use ($category) {
+                $query->where('id', $category)
+                      ->orWhere('slug', $category);
+            })
+            ->latest()
+            ->get();
+
+        return response()->json($documents);
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        if (!$query) {
+            return response()->json([]);
+        }
+
+        $documents = Documents::where('title', 'like', "%{$query}%")
+            ->latest()
+            ->get();
+
+        return response()->json($documents);
+    }
+
+    public function getCategories()
+    {
+        $categories = \App\Models\DocumentCategory::all();
+
+        return response()->json($categories);
+    }
 }

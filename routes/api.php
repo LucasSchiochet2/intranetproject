@@ -34,6 +34,9 @@ Route::get('/calendar/upcoming', [CalendarController::class, 'upcoming']);
 Route::get('/calendar/{id}', [CalendarController::class, 'show']);
 
 Route::get('/documents', [DocumentsController::class, 'index']);
+Route::get('/documents/search', [DocumentsController::class, 'search']);
+Route::get('/documents/categories', [DocumentsController::class, 'getCategories']);
+Route::get('/documents/category/{category}', [DocumentsController::class, 'show_by_category']);
 Route::get('/documents/{id}', [DocumentsController::class, 'show']);
 
 Route::get('/pages', [PageController::class, 'index']);
