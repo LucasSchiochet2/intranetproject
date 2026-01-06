@@ -43,6 +43,9 @@ Route::get('/pages', [PageController::class, 'index']);
 Route::get('/pages/{slug}', [PageController::class, 'show']);
 
 Route::get('/menu', [MenuController::class, 'index']);
+Route::get('/menu/main', [MenuController::class, 'main']);
+Route::get('/menu/fastaccess', [MenuController::class, 'fastaccess']);
+Route::get('/menu/links', [MenuController::class, 'links']);
 
 // Public POST route for Ombudsman
 Route::middleware(['frontend.only'])->group(function () {
