@@ -39,4 +39,11 @@ class CollaboratorAuthController extends Controller
             'birthdays' => $collaboratorsWithBirthdayList->values(),
         ]);
     }
+    public function getCollaborators()
+    {
+        $collaborators = Collaborators::all(['id', 'name', 'email']);
+        return response()->json([
+            'collaborators' => $collaborators,
+        ]);
+    }
 }

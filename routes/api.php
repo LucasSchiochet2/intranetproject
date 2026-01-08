@@ -47,11 +47,18 @@ Route::get('/menu/main', [MenuController::class, 'main']);
 Route::get('/menu/fastaccess', [MenuController::class, 'fastaccess']);
 Route::get('/menu/links', [MenuController::class, 'links']);
 
-// Public POST route for Ombudsman
+// Public POST route
 Route::middleware(['frontend.only'])->group(function () {
     Route::post('/ombudsman', [OmbudsmanController::class, 'store']);
-
+    Route::post('/task', [App\Http\Controllers\Api\TaskController::class, 'store']);
+    Route::put('/task/{id}', [App\Http\Controllers\Api\TaskController::class, 'update']);
+    Route::post('/task/{id}', [App\Http\Controllers\Api\TaskController::class, 'archive']);
+    Route::post('/task/{id}/unarchive', [App\Http\Controllers\Api\TaskController::class, 'unarchive']);
 });
+Route::get('/task/archived', [App\Http\Controllers\Api\TaskController::class, 'getArchivedTasks']);
+Route::get('collaborators', [App\Http\Controllers\Api\CollaboratorAuthController::class, 'getCollaborators']);
+Route::get('/task/collaborator/{collaborator_id}', [App\Http\Controllers\Api\TaskController::class, 'showCollaboratorTasks']);
+Route::get('/task/collaborator/sender/{collaborator_id}', [App\Http\Controllers\Api\TaskController::class, 'showCollaboratorSenderTasks']);
     Route::get('/ombudsman/{response_token}', [OmbudsmanController::class, 'show']);
 // Public POST route for Collaborator Login
 Route::post('/login', [CollaboratorAuthController::class, 'login']);

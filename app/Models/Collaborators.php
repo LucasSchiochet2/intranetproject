@@ -40,4 +40,13 @@ class Collaborators extends Authenticatable
 
         $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path);
     }
+    public function sentTasks()
+    {
+        return $this->hasMany(Task::class, 'collaborator_id_sender');
+    }
+    
+    public function receivedTasks()
+    {
+        return $this->hasMany(Task::class, 'collaborator_id_receiver');
+    }
 }
