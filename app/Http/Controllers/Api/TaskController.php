@@ -18,6 +18,7 @@ class TaskController extends Controller
             'deadline' => 'nullable|date',
             'collaborator_id_sender' => 'nullable|integer|exists:collaborators,id',
             'collaborator_id_receiver' => 'nullable|integer|exists:collaborators,id',
+            'dashboard_id' => 'nullable|integer|exists:dashboards,id',
             'status' => 'nullable|string|max:50',
             'tag' => 'nullable|string|max:100',
             'attachment' => 'nullable|array',
@@ -49,7 +50,7 @@ class TaskController extends Controller
         }
 
         // Load the checklist items for the response
-        $task->load('checklistItems');
+        $task->load(['checklistItems', 'dashboard']);
 
         return response()->json([
             'message' => 'Task request created successfully',
@@ -70,6 +71,7 @@ class TaskController extends Controller
             'deadline' => 'sometimes|nullable|date',
             'collaborator_id_sender' => 'sometimes|nullable|integer|exists:collaborators,id',
             'collaborator_id_receiver' => 'sometimes|nullable|integer|exists:collaborators,id',
+            'dashboard_id' => 'sometimes|nullable|integer|exists:dashboards,id',
             'status' => 'sometimes|nullable|string|max:50',
             'tag' => 'sometimes|nullable|string|max:100',
             'attachment' => 'sometimes|nullable|array',
@@ -109,7 +111,7 @@ class TaskController extends Controller
         }
 
         // Load the checklist items for the response
-        $task->load('checklistItems');
+        $task->load(['checklistItems', 'dashboard']);
 
         return response()->json([
             'message' => 'Task updated successfully',
@@ -146,20 +148,31 @@ class TaskController extends Controller
             'data' => $task,
         ], 200);
     }
+    public function show($id)
+    {
+        $task = Task::with(['checklistItems', 'dashboard'])->find($id);
+
+        if (!$task) {
+            return response()->json(['message' => 'Task not found'], 404);
+        }
+
+        return response()->json($task);
+    }
+
     public function getArchivedTasks()
     {
-        $tasks = Task::with('checklistItems')->where('is_archived', true)->get();
+        $tasks = Task::with(['checklistItems', 'dashboard'])->where('is_archived', true)->get();
         return response()->json($tasks);
     }
     public function showCollaboratorTasks($collaborator_id)
     {
-        $task = Task::with('checklistItems')->where('collaborator_id_receiver', $collaborator_id)->where('is_archived', false)->get();
+        $task = Task::with(['checklistItems', 'dashboard'])->where('collaborator_id_receiver', $collaborator_id)->where('is_archived', false)->get();
         return response()->json($task);
     }
 
     public function showCollaboratorSenderTasks($collaborator_id)
     {
-        $task = Task::with('checklistItems')->where('collaborator_id_sender', $collaborator_id)->where('is_archived', false)->get();
+        $task = Task::with(['checklistItems', 'dashboard'])->where('collaborator_id_sender', $collaborator_id)->where('is_archived', false)->get();
         return response()->json($task);
     }
 }

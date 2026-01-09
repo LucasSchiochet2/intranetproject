@@ -11,6 +11,7 @@ class Collaborators extends Authenticatable
 {
     use CrudTrait;
     use HasFactory, Notifiable;
+    use \App\Traits\BelongsToTenant;
 
     protected $table = 'collaborators';
 
@@ -22,6 +23,7 @@ class Collaborators extends Authenticatable
         'department',
         'birth_date',
         'url_photo',
+        'tenant_id',
     ];
 
     public function setPasswordAttribute($value)
@@ -48,5 +50,10 @@ class Collaborators extends Authenticatable
     public function receivedTasks()
     {
         return $this->hasMany(Task::class, 'collaborator_id_receiver');
+    }
+
+    public function dashboards()
+    {
+        return $this->belongsToMany(Dashboard::class, 'collaborator_dashboard', 'collaborator_id', 'dashboard_id');
     }
 }

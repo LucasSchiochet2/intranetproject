@@ -54,12 +54,26 @@ Route::middleware(['frontend.only'])->group(function () {
     Route::put('/task/{id}', [App\Http\Controllers\Api\TaskController::class, 'update']);
     Route::post('/task/{id}', [App\Http\Controllers\Api\TaskController::class, 'archive']);
     Route::post('/task/{id}/unarchive', [App\Http\Controllers\Api\TaskController::class, 'unarchive']);
+    Route::post('/dashboard', [App\Http\Controllers\Api\DashboardController::class, 'store']);
+    Route::put('/dashboard/{id}', [App\Http\Controllers\Api\DashboardController::class, 'update']);
+    Route::delete('/dashboard/{id}', [App\Http\Controllers\Api\DashboardController::class, 'destroy']);
+
 });
+
+Route::get('/dashboard/personal/{id}', [App\Http\Controllers\Api\DashboardController::class, 'personal']);
+Route::get('/dashboard', [App\Http\Controllers\Api\DashboardController::class, 'index']);
+Route::get('/dashboard/{id}', [App\Http\Controllers\Api\DashboardController::class, 'show']);
+Route::get('/dashboard/collaborator/{id}', [App\Http\Controllers\Api\DashboardController::class, 'getCollaboratorDashboards']);
+
 Route::get('/task/archived', [App\Http\Controllers\Api\TaskController::class, 'getArchivedTasks']);
-Route::get('collaborators', [App\Http\Controllers\Api\CollaboratorAuthController::class, 'getCollaborators']);
 Route::get('/task/collaborator/{collaborator_id}', [App\Http\Controllers\Api\TaskController::class, 'showCollaboratorTasks']);
 Route::get('/task/collaborator/sender/{collaborator_id}', [App\Http\Controllers\Api\TaskController::class, 'showCollaboratorSenderTasks']);
-    Route::get('/ombudsman/{response_token}', [OmbudsmanController::class, 'show']);
+Route::get('/task/{id}', [App\Http\Controllers\Api\TaskController::class, 'show']);
+
+Route::get('collaborators', [App\Http\Controllers\Api\CollaboratorAuthController::class, 'getCollaborators']);
+
+Route::get('/ombudsman/{response_token}', [OmbudsmanController::class, 'show']);
+
 // Public POST route for Collaborator Login
 Route::post('/login', [CollaboratorAuthController::class, 'login']);
 Route::get('/birthdays', [CollaboratorAuthController::class, 'birthdays']);

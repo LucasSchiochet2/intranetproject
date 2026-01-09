@@ -16,7 +16,7 @@ class CollaboratorAuthController extends Controller
             'password' => 'required',
         ]);
 
-        $collaborator = Collaborators::where('email', $request->email)->first();
+        $collaborator = Collaborators::withoutGlobalScope(\App\Scopes\TenantScope::class)->where('email', $request->email)->first();
 
         if (! $collaborator || ! Hash::check($request->password, $collaborator->password)) {
             return response()->json([
@@ -24,16 +24,18 @@ class CollaboratorAuthController extends Controller
             ], 401);
         }
 
+        // Ensure tenant relationship is loaded if needed, or just return the ID
         return response()->json([
             'message' => 'Login realizado com sucesso',
             'collaborator' => $collaborator,
+            'tenant_id' => $collaborator->tenant_id,
         ]);
     }
     public function birthdays()
     {
         $today = date('m-d');
 
-        $collaboratorsWithBirthdayList = Collaborators::whereNotNull('birth_date')->get(['name', 'birth_date','url_photo']);
+        $collaboratorsWithBirthdayList = Collaborators::withoutGlobalScope(\App\Scopes\TenantScope::class)->whereNotNull('birth_date')->get(['name', 'birth_date','url_photo']);
 
         return response()->json([
             'birthdays' => $collaboratorsWithBirthdayList->values(),
@@ -41,7 +43,7 @@ class CollaboratorAuthController extends Controller
     }
     public function getCollaborators()
     {
-        $collaborators = Collaborators::all(['id', 'name', 'email']);
+        $collaborators = Collaborators::withoutGlobalScope(\App\Scopes\TenantScope::class)->get(['id', 'name', 'email']);
         return response()->json([
             'collaborators' => $collaborators,
         ]);

@@ -46,3 +46,5 @@
     <x-backpack::menu-item title="Menu Manager" icon="la la-list" :link="backpack_url('menu-item')" />
 </x-backpack::menu-dropdown>
 {{-- Menu Manager --}}
+
+<x-backpack::menu-item title="Dashboards" icon="la la-question" :link="backpack_url('dashboard')" />

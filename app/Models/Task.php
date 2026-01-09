@@ -25,7 +25,13 @@ class Task extends Model
         'tag',
         'attachment',
         'is_archived',
+        'dashboard_id',
     ];
+
+    public function dashboard()
+    {
+        return $this->belongsTo(Dashboard::class);
+    }
 
     public function sender()
     {

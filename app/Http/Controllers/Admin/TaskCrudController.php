@@ -42,6 +42,7 @@ class TaskCrudController extends CrudController
         CRUD::column('title')->label('Título');
         CRUD::column('deadline')->label('Prazo')->type('datetime');
         CRUD::column('receiver')->label('Destinatário')->type('select')->entity('receiver')->attribute('name')->model('App\Models\Collaborators');
+        CRUD::column('dashboard')->label('Dashboard')->type('select')->entity('dashboard')->attribute('name')->model('App\Models\Dashboard');
         CRUD::column('status')->label('Status');
     }
 
@@ -72,8 +73,9 @@ class TaskCrudController extends CrudController
         CRUD::field('description')->label('Descrição')->type('textarea');
         CRUD::field('is_completed')->label('Concluído')->type('boolean')->default(false);
         CRUD::field('deadline')->label('Prazo')->type('datetime');
-        CRUD::field('collaborator_id_sender')->label('Colaborador')->entity('sender')->attribute('name')->model('App\Models\Collaborators');
+        CRUD::field('dashboard_id')->label('Dashboard')->type('select')->entity('dashboard')->attribute('name')->model('App\Models\Dashboard');
         CRUD::field('collaborator_id_receiver')->label('Destinatário')->type('select')->entity('receiver')->attribute('name')->model('App\Models\Collaborators');
+        CRUD::field('collaborator_id_sender')->label('Colaborador')->type('select')->entity('sender')->attribute('name')->model('App\Models\Collaborators');
         CRUD::field('status')->label('Status')->type('text')->default('pending');
         CRUD::field('tag')->label('Tag')->type('text');
         CRUD::field('attachment')->label('Anexos')->type('upload_multiple')->upload(true);
