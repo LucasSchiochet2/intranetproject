@@ -9,7 +9,7 @@ class Banner extends Model
 {
     use CrudTrait;
     protected $table = 'banners';
-
+    use \App\Traits\BelongsToTenant;
     protected $fillable = [
         'title',
         'description',
@@ -17,6 +17,7 @@ class Banner extends Model
         'link_url',
         'is_active',
         'display_order',
+        'tenant_id',
     ];
 
     public function setImageUrlAttribute($value)

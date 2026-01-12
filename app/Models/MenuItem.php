@@ -6,5 +6,6 @@ use Backpack\MenuCRUD\app\Models\MenuItem as OriginalMenuItem;
 
 class MenuItem extends OriginalMenuItem
 {
-    protected $fillable = ['name', 'type', 'link', 'page_id', 'parent_id', 'icon', 'menu_key'];
+    use \App\Traits\BelongsToTenant;
+    protected $fillable = ['name', 'type', 'link', 'page_id', 'parent_id', 'icon', 'menu_key', 'tenant_id'];
 }

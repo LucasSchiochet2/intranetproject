@@ -24,7 +24,7 @@ class DashboardController extends Controller
     public function personal($id)
     {
         // Verify if collaborator exists
-        $collaborator = \App\Models\Collaborators::withoutGlobalScope(\App\Scopes\TenantScope::class)->find($id);
+        $collaborator = \App\Models\Collaborators::find($id);
 
         if (!$collaborator) {
             return response()->json(['message' => 'Collaborator not found'], 404);
@@ -33,10 +33,8 @@ class DashboardController extends Controller
         // Get tasks where the collaborator is the receiver
         // Filters: Receiver is the user, and Not Archived
         $tasks = \App\Models\Task::with([
+                'collaboratorReceiver',
                 'checklistItems',
-                'dashboard' => function ($query) {
-                    $query->withoutGlobalScope(\App\Scopes\TenantScope::class);
-                }
             ])
             ->where('collaborator_id_receiver', $id)
             ->where('is_archived', false)
@@ -63,18 +61,15 @@ class DashboardController extends Controller
      */
     public function getCollaboratorDashboards($id)
     {
-        $collaborator = \App\Models\Collaborators::withoutGlobalScope(\App\Scopes\TenantScope::class)->find($id);
+        $collaborator = \App\Models\Collaborators::find($id);
 
         if (!$collaborator) {
             return response()->json(['message' => 'Collaborator not found'], 404);
         }
 
         $dashboards = $collaborator->dashboards()
-            ->withoutGlobalScope(\App\Scopes\TenantScope::class)
             ->with([
-                'collaborators' => function ($query) {
-                    $query->withoutGlobalScope(\App\Scopes\TenantScope::class);
-                },
+                'collaborators',
                 'tasks'
             ])
             ->get();
@@ -132,7 +127,7 @@ class DashboardController extends Controller
      */
     public function show(string $id)
     {
-        $dashboard = Dashboard::withoutGlobalScope(\App\Scopes\TenantScope::class)->with(['collaborators', 'tasks'])->find($id);
+        $dashboard = Dashboard::find($id);
 
         if (!$dashboard) {
             return response()->json(['message' => 'Dashboard not found'], 404);
@@ -146,7 +141,7 @@ class DashboardController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $dashboard = Dashboard::withoutGlobalScope(\App\Scopes\TenantScope::class)->find($id);
+        $dashboard = Dashboard::find($id);
 
         if (!$dashboard) {
             return response()->json(['message' => 'Dashboard not found'], 404);
@@ -182,7 +177,7 @@ class DashboardController extends Controller
      */
     public function destroy(string $id)
     {
-        $dashboard = Dashboard::withoutGlobalScope(\App\Scopes\TenantScope::class)->find($id);
+        $dashboard = Dashboard::find($id);
 
         if (!$dashboard) {
             return response()->json(['message' => 'Dashboard not found'], 404);

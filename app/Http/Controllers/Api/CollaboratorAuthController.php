@@ -16,7 +16,7 @@ class CollaboratorAuthController extends Controller
             'password' => 'required',
         ]);
 
-        $collaborator = Collaborators::withoutGlobalScope(\App\Scopes\TenantScope::class)->where('email', $request->email)->first();
+        $collaborator = Collaborators::where('email', $request->email)->first();
 
         if (! $collaborator || ! Hash::check($request->password, $collaborator->password)) {
             return response()->json([
@@ -35,7 +35,7 @@ class CollaboratorAuthController extends Controller
     {
         $today = date('m-d');
 
-        $collaboratorsWithBirthdayList = Collaborators::withoutGlobalScope(\App\Scopes\TenantScope::class)->whereNotNull('birth_date')->get(['name', 'birth_date','url_photo']);
+        $collaboratorsWithBirthdayList = Collaborators::whereNotNull('birth_date')->get(['name', 'birth_date','url_photo']);
 
         return response()->json([
             'birthdays' => $collaboratorsWithBirthdayList->values(),
@@ -43,7 +43,7 @@ class CollaboratorAuthController extends Controller
     }
     public function getCollaborators()
     {
-        $collaborators = Collaborators::withoutGlobalScope(\App\Scopes\TenantScope::class)->get(['id', 'name', 'email']);
+        $collaborators = Collaborators::get(['id', 'name', 'email']);
         return response()->json([
             'collaborators' => $collaborators,
         ]);
