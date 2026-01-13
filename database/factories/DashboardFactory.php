@@ -5,12 +5,10 @@ namespace Database\Factories;
 use App\Models\Tenant;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-use Illuminate\Support\Str;
-
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\DocumentCategory>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Dashboard>
  */
-class DocumentCategoryFactory extends Factory
+class DashboardFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,11 +17,10 @@ class DocumentCategoryFactory extends Factory
      */
     public function definition(): array
     {
-        $name = $this->faker->word;
         return [
             'tenant_id' => Tenant::factory(),
-            'name' => $name,
-            'slug' => Str::slug($name),
+            'name' => $this->faker->bs,
+            'description' => $this->faker->sentence,
         ];
     }
 }

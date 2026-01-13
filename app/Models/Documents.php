@@ -30,6 +30,12 @@ class Documents extends Model
         $disk = config('filesystems.default');
         $destination_path = "uploads/documents";
 
+        // Fix for factory/seeding with strings/URLs
+        if (is_array($value) && !empty($value) && is_string($value[0])) {
+            $this->attributes[$attribute_name] = json_encode($value);
+            return;
+        }
+
         $this->uploadMultipleFilesToDisk($value, $attribute_name, $disk, $destination_path);
     }
 }

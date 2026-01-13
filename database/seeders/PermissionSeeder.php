@@ -28,6 +28,11 @@ class PermissionSeeder extends Seeder
             'users',
             'roles',
             'permissions',
+            'collaborators',
+            'tasks',
+            'dashboards',
+            'banners',
+            'tenants',
         ];
 
         foreach ($modules as $module) {

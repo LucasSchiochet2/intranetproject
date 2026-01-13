@@ -59,6 +59,12 @@ class News extends Model
         $disk = config('filesystems.default');
         $destination_path = "uploads/news/photos";
 
+        // Fix for factory/seeding with URLs
+        if (is_array($value) && !empty($value) && is_string($value[0]) && filter_var($value[0], FILTER_VALIDATE_URL)) {
+            $this->attributes[$attribute_name] = json_encode($value);
+            return;
+        }
+
         $this->uploadMultipleFilesToDisk($value, $attribute_name, $disk, $destination_path);
     }
 

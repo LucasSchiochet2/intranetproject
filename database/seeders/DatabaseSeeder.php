@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             OmbudsmanSeeder::class,
             MenuSeeder::class,
             BannerSeeder::class,
+            CollaboratorTaskSeeder::class,
         ]);
 
         User::factory()->create([

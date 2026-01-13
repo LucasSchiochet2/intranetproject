@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\DocumentCategory;
+use App\Models\Tenant;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,9 +19,10 @@ class DocumentsFactory extends Factory
     public function definition(): array
     {
         return [
+            'tenant_id' => Tenant::factory(),
             'title' => $this->faker->sentence(4),
             'description' => $this->faker->paragraph,
-            'files' => ['uploads/documents/sample.pdf'], // Placeholder array for JSON
+            'files' => ['https://pdfobject.com/pdf/sample.pdf'], // Generic external PDF
             'document_category_id' => DocumentCategory::factory(),
         ];
     }
