@@ -46,7 +46,7 @@ class Collaborators extends Authenticatable
     {
         return $this->hasMany(Task::class, 'collaborator_id_sender');
     }
-    
+
     public function receivedTasks()
     {
         return $this->hasMany(Task::class, 'collaborator_id_receiver');
@@ -55,5 +55,9 @@ class Collaborators extends Authenticatable
     public function dashboards()
     {
         return $this->belongsToMany(Dashboard::class, 'collaborator_dashboard', 'collaborator_id', 'dashboard_id');
+    }
+    public function messages()
+    {
+        return $this->belongsToMany(Message::class, 'message_collaborators', 'collaborator_id', 'message_id');
     }
 }

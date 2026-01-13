@@ -30,6 +30,7 @@ Route::group([
     Route::crud('banner', 'BannerCrudController');
     Route::crud('task', 'TaskCrudController');
     Route::crud('dashboard', 'DashboardCrudController');
+    Route::crud('message', 'MessageCrudController');
 }); // this should be the absolute last line of this file
 
 /**

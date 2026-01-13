@@ -60,6 +60,10 @@ Route::middleware(['frontend.only'])->group(function () {
 
 });
 
+Route::get('/message/collaborator/{collaborator_id}', [App\Http\Controllers\Api\MessageController::class, 'showCollaboratorMessages']);
+Route::put('/message/{id}/read', [App\Http\Controllers\Api\MessageController::class, 'markAsRead']);
+Route::get('/message/{id}', [App\Http\Controllers\Api\MessageController::class, 'show']);
+
 Route::get('/dashboard/personal/{id}', [App\Http\Controllers\Api\DashboardController::class, 'personal']);
 Route::get('/dashboard', [App\Http\Controllers\Api\DashboardController::class, 'index']);
 Route::get('/dashboard/{id}', [App\Http\Controllers\Api\DashboardController::class, 'show']);

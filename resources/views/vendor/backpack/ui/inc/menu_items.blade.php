@@ -26,6 +26,9 @@
 @can('list pages')
 <x-backpack::menu-item title="Páginas" icon="la la-file" :link="backpack_url('page')" />
 @endcan
+{{-- @can('list messages') --}}
+<x-backpack::menu-item title="Messages" icon="la la-envelope" :link="backpack_url('message')" />
+{{-- @endcan --}}
 @can('list banners')
 <x-backpack::menu-item title="Banners" icon="la la-image" :link="backpack_url('banner')" />
 @endcan

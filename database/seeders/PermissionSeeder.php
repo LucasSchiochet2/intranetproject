@@ -35,6 +35,7 @@ class PermissionSeeder extends Seeder
             'tenants',
             'pages',
             'menu_items',
+            'messages',
         ];
 
         // Create User Role
