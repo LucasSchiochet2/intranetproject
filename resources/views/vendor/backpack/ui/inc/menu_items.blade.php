@@ -23,10 +23,15 @@
 @can('list calendar')
     <x-backpack::menu-item title="Calendário" icon="la la-calendar" :link="backpack_url('calendar')" />
 @endcan
-
+@can('list pages')
 <x-backpack::menu-item title="Páginas" icon="la la-file" :link="backpack_url('page')" />
-
+@endcan
+@can('list banners')
 <x-backpack::menu-item title="Banners" icon="la la-image" :link="backpack_url('banner')" />
+@endcan
+@can('list dashboards')
+<x-backpack::menu-item title="Dashboards" icon="la la-dashboard" :link="backpack_url('dashboard')" />
+@endcan
 
 @can('list document_categories')
     <x-backpack::menu-dropdown title="Categorias" icon="la la-tags">
@@ -46,5 +51,3 @@
     <x-backpack::menu-item title="Menu Manager" icon="la la-list" :link="backpack_url('menu-item')" />
 </x-backpack::menu-dropdown>
 {{-- Menu Manager --}}
-
-<x-backpack::menu-item title="Dashboards" icon="la la-question" :link="backpack_url('dashboard')" />

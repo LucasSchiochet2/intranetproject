@@ -13,6 +13,19 @@ class MenuItemCrudController extends OriginalMenuItemCrudController
     {
         parent::setup();
         $this->crud->setModel(MenuItem::class);
+
+        if (!backpack_user()->can('list menu_items')) {
+            $this->crud->denyAccess(['list', 'show']);
+        }
+        if (!backpack_user()->can('create menu_items')) {
+            $this->crud->denyAccess(['create']);
+        }
+        if (!backpack_user()->can('update menu_items')) {
+            $this->crud->denyAccess(['update']);
+        }
+        if (!backpack_user()->can('delete menu_items')) {
+            $this->crud->denyAccess(['delete']);
+        }
     }
 
     public function setupCreateOperation()

@@ -33,13 +33,25 @@ class PermissionSeeder extends Seeder
             'dashboards',
             'banners',
             'tenants',
+            'pages',
+            'menu_items',
         ];
 
+        // Create User Role
+        $userRole = null;
+        if (Role::where('name', 'user')->exists()) {
+            $userRole = Role::findByName('user', 'web');
+        } else {
+            $userRole = Role::create(['name' => 'user', 'guard_name' => 'web']);
+        }
+
         foreach ($modules as $module) {
-            Permission::firstOrCreate(['name' => "list $module", 'guard_name' => 'web']);
+            $listPermission = Permission::firstOrCreate(['name' => "list $module", 'guard_name' => 'web']);
             Permission::firstOrCreate(['name' => "create $module", 'guard_name' => 'web']);
             Permission::firstOrCreate(['name' => "update $module", 'guard_name' => 'web']);
             Permission::firstOrCreate(['name' => "delete $module", 'guard_name' => 'web']);
+
+            $userRole->givePermissionTo($listPermission);
         }
 
         // Create Admin Role and assign all permissions
