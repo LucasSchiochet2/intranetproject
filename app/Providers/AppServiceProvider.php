@@ -36,6 +36,11 @@ class AppServiceProvider extends ServiceProvider
                 config(['app.url' => str_replace('http://', 'https://', config('app.url'))]);
             }
 
+            // Fix ASSET_URL in config if it is HTTP
+            if (config('app.asset_url') && str_contains(config('app.asset_url'), 'http://')) {
+                config(['app.asset_url' => str_replace('http://', 'https://', config('app.asset_url'))]);
+            }
+
             // Fix for Basset/Storage creating http links if APP_URL is http
             $publicUrl = config('filesystems.disks.public.url');
             if ($publicUrl && str_contains($publicUrl, 'http://')) {
