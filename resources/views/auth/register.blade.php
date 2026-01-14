@@ -6,6 +6,7 @@
     <title>Criar Conta - {{ config('app.name', 'Intranet') }}</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700&display=swap" rel="stylesheet" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     @vite(['resources/css/app.css'])
 </head>
 <body class="bg-gray-50 font-sans text-gray-900 antialiased">
@@ -23,7 +24,7 @@
 
         <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
             <h2 class="text-center text-xl font-semibold text-gray-700 mb-6">Crie sua conta e comece agora</h2>
-            
+
             <form method="POST" action="{{ route('register') }}">
                 @csrf
 
