@@ -19,7 +19,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->api(append: [
             \App\Http\Middleware\CheckTenant::class,
         ]);
-        
+
         $middleware->alias([
             'frontend.only' => \App\Http\Middleware\EnsureFrontendRequest::class,
         ]);
