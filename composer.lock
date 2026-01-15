@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "491661809e525695e38ea4f716f23898",
+    "content-hash": "5e04afd7ab13e36bd52557ef832fa46c",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -159,16 +159,16 @@
         },
         {
             "name": "backpack/basset",
-            "version": "2.0.0",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Laravel-Backpack/basset.git",
-                "reference": "1efadaf5e2352a4b6b21e8799a8e1b9029707da1"
+                "reference": "d78f55b22c6e90319cbce51d8e9239177dc189dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Laravel-Backpack/basset/zipball/1efadaf5e2352a4b6b21e8799a8e1b9029707da1",
-                "reference": "1efadaf5e2352a4b6b21e8799a8e1b9029707da1",
+                "url": "https://api.github.com/repos/Laravel-Backpack/basset/zipball/d78f55b22c6e90319cbce51d8e9239177dc189dd",
+                "reference": "d78f55b22c6e90319cbce51d8e9239177dc189dd",
                 "shasum": ""
             },
             "require": {
@@ -227,9 +227,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Laravel-Backpack/basset/issues",
-                "source": "https://github.com/Laravel-Backpack/basset/tree/2.0.0"
+                "source": "https://github.com/Laravel-Backpack/basset/tree/2.0.2"
             },
-            "time": "2025-11-21T07:27:01+00:00"
+            "time": "2026-01-09T11:20:05+00:00"
         },
         {
             "name": "backpack/crud",
@@ -9807,12 +9807,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
     },
-    "platform-dev": {},
-    "plugin-api-version": "2.9.0"
+    "platform-dev": [],
+    "plugin-api-version": "2.6.0"
 }
