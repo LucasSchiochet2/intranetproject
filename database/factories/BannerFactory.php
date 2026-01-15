@@ -20,7 +20,7 @@ class BannerFactory extends Factory
         return [
             'tenant_id' => Tenant::factory(),
             'title' => $this->faker->sentence(3),
-            'description' => $this->faker->sentence,
+            'description' => $this->faker->sentence(8),
             'image_url' => 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&q=80', // Office placeholder
             'link_url' => '#',
             'is_active' => true,
