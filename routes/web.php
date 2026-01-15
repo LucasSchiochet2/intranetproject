@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'welcome')->name('welcome');
 
 // Registration Routes
 Route::get('register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
@@ -10,7 +9,7 @@ Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'r
 
 Route::middleware(['auth'])->group(function () {
 
-    // Route::redirect('/', '/admin/dashboard')->name('home');
+    Route::redirect('/', '/admin/dashboard')->name('home');
 });
 
 Route::get('login', function () {
