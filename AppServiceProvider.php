@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\ServiceProvider;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -17,18 +18,8 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-   public function boot(): void
-{
-    // Se estivermos em produção (Railway)
-    if ($this->app->environment('production')) {
-        // 1. Força os links gerados a serem https://
+    public function boot(): void
+    {
         URL::forceScheme('https');
-
-        // 2. Força a URL raiz a ser a que você definiu no .env
-        // Isso impede que o Laravel use "http://localhost" ou o IP interno
-        if (config('app.url')) {
-            URL::forceRootUrl(config('app.url'));
-        }
     }
-}
 }
