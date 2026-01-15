@@ -8,13 +8,13 @@ use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Traits\BelongsToTenant;
+// use App\Traits\BelongsToTenant; // ocultado por solicitação
 
 class User extends Authenticatable
 {
     use CrudTrait;
     use HasRoles;
-    use BelongsToTenant;
+    // use BelongsToTenant; // ocultado por solicitação
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 

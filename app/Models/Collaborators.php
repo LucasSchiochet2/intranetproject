@@ -11,7 +11,7 @@ class Collaborators extends Authenticatable
 {
     use CrudTrait;
     use HasFactory, Notifiable;
-    use \App\Traits\BelongsToTenant;
+    // use \App\Traits\BelongsToTenant; // ocultado por solicitação
 
     protected $table = 'collaborators';
 

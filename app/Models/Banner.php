@@ -11,7 +11,7 @@ class Banner extends Model
     use CrudTrait;
     use HasFactory;
     protected $table = 'banners';
-    use \App\Traits\BelongsToTenant;
+    // use \App\Traits\BelongsToTenant; // ocultado por solicitação
     protected $fillable = [
         'title',
         'description',

@@ -24,7 +24,7 @@ Route::group([
     Route::crud('calendar', 'CalendarCrudController');
     Route::crud('role', 'RoleCrudController');
     Route::crud('permission', 'PermissionCrudController');
-    Route::crud('tenant', 'TenantCrudController');
+    // Route::crud('tenant', 'TenantCrudController'); // ocultado por solicitação
     Route::crud('menu-item', 'MenuItemCrudController');
     Route::crud('collaborators', 'CollaboratorsCrudController');
     Route::crud('banner', 'BannerCrudController');

@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\BelongsToTenant;
+// use App\Traits\BelongsToTenant; // ocultado por solicitação
 class Message extends Model
 {
     use CrudTrait;
-    use BelongsToTenant;
+    // use BelongsToTenant; // ocultado por solicitação
     protected $fillable = [
         'user_id',
         'title',
