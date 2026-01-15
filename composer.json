@@ -10,7 +10,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "backpack/basset": "*",
+        "backpack/basset": "^2.0",
         "backpack/crud": "7.0",
         "backpack/menucrud": "*",
         "backpack/permissionmanager": "^7.3",
