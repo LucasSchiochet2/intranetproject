@@ -52,9 +52,9 @@ class Ombudsman extends Model
     public function setAttachmentAttribute($value)
     {
         $attribute_name = "attachment";
-        // Usa o disco padrão definido no .env (FILESYSTEM_DISK). 
+        // Usa o disco padrão definido no .env (FILESYSTEM_DISK).
         // Em dev pode ser 'public', em prod pode ser 's3' ou 'r2'.
-        $disk = config('filesystems.default'); 
+        $disk = config('filesystems.default');
         $destination_path = "uploads/ombudsman";
 
         $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path);
@@ -62,9 +62,9 @@ class Ombudsman extends Model
     public function setAdminAttachmentAttribute($value)
     {
         $attribute_name = "admin_attachment";
-        // Usa o disco padrão definido no .env (FILESYSTEM_DISK). 
+        // Usa o disco padrão definido no .env (FILESYSTEM_DISK).
         // Em dev pode ser 'public', em prod pode ser 's3' ou 'r2'.
-        $disk = config('filesystems.default'); 
+        $disk = config('filesystems.default');
         $destination_path = "uploads/ombudsman";
 
         $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path);
