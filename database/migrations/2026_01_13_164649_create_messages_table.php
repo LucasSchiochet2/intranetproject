@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('content')->nullable();
             $table->boolean('is_read')->default(false);
-            $table->foreignId('tenant_id')->constrained()->onDelete('cascade');
+            $table->foreignId('tenant_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamps();
         });
         Schema::create('message_collaborators', function (Blueprint $table) {

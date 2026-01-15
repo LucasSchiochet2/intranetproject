@@ -24,9 +24,12 @@ class DocumentCategoryRequest extends FormRequest
      */
     public function rules()
     {
+        $id = $this->route('id') ?? $this->id ?? null;
         return [
             'name' => 'required|min:2|max:255',
-            'slug' => 'required|unique:document_categories,slug,'.($this->id ?? '').',id',
+            'slug' => $id
+                ? 'required|unique:document_categories,slug,' . $id . ',id'
+                : 'required|unique:document_categories,slug',
         ];
     }
 

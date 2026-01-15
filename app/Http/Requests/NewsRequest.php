@@ -24,9 +24,12 @@ class NewsRequest extends FormRequest
      */
     public function rules()
     {
+        $id = $this->route('id') ?? $this->id ?? null;
         return [
             'title' => 'required|min:5|max:255',
-            'slug' => 'required|unique:news,slug,'.($this->id ?? '').',id',
+            'slug' => $id
+                ? 'required|unique:news,slug,' . $id . ',id'
+                : 'required|unique:news,slug',
             'content' => 'required|min:10',
             'image' => 'nullable',
             'published_at' => 'nullable|date',

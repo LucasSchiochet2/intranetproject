@@ -24,11 +24,13 @@ class CollaboratorsRequest extends FormRequest
      */
     public function rules()
     {
-        $id = $this->route('id') ?? null;
+        $id = $this->route('id');
 
         $rules = [
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:collaborators,email,' . $id,
+            'email' => $id
+                ? 'required|email|unique:collaborators,email,' . $id
+                : 'required|email|unique:collaborators,email',
             'position' => 'nullable|string|max:255',
             'department' => 'nullable|string|max:255',
         ];
