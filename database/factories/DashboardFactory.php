@@ -19,7 +19,7 @@ class DashboardFactory extends Factory
     {
         return [
             'tenant_id' => Tenant::factory(),
-            'name' => $this->faker->bs,
+            'name' => $this->faker->words(3, true),
             'description' => $this->faker->sentence,
         ];
     }

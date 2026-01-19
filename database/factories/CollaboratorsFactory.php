@@ -25,7 +25,7 @@ class CollaboratorsFactory extends Factory
             'email' => $this->faker->unique()->safeEmail,
             'password' => 'password', // Mutator handles hashing
             'position' => $this->faker->jobTitle,
-            'department' => $this->faker->bs,
+            'department' => $this->faker->words(2, true),
             'birth_date' => $this->faker->date(),
             'url_photo' => null, // 'uploads/collaborators/default.jpg'
         ];

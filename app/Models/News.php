@@ -6,14 +6,14 @@ use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-// use App\Traits\BelongsToTenant; // ocultado por solicitação
+use App\Traits\BelongsToTenant; // ocultado por solicitação
 
 class News extends Model
 {
     use CrudTrait;
     use HasFactory;
     use Sluggable;
-    // use BelongsToTenant; // ocultado por solicitação
+    use BelongsToTenant; // ocultado por solicitação
 
     /*
     |--------------------------------------------------------------------------

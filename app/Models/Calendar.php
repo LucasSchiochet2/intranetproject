@@ -5,13 +5,13 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-// use App\Traits\BelongsToTenant; // ocultado por solicitação
+use App\Traits\BelongsToTenant; // ocultado por solicitação
 
 class Calendar extends Model
 {
     use CrudTrait;
     use HasFactory;
-    // use BelongsToTenant; // ocultado por solicitação
+    use BelongsToTenant; // ocultado por solicitação
 
     protected $fillable = [
         'title',

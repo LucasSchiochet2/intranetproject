@@ -51,5 +51,14 @@ class BannerSeeder extends Seeder
         foreach ($banners as $banner) {
             DB::table('banners')->updateOrInsert(['id' => $banner['id']], $banner);
         }
+
+        try {
+            $pdo = DB::getPdo();
+            if ($pdo->getAttribute(\PDO::ATTR_DRIVER_NAME) === 16) {
+                DB::statement("SELECT setval(pg_get_serial_sequence('banners','id'), (SELECT COALESCE(MAX(id), 1) FROM banners))");
+            }
+        } catch (\Throwable $e) {
+            // If we can't adjust the sequence, ignore — non-pg databases don't need it.
+        }
     }
 }
