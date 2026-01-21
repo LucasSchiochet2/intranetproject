@@ -11,8 +11,11 @@ export default defineConfig({
         tailwindcss(),
     ],
     server: {
+        host: true, // Permite acesso de qualquer host/subdomínio
         watch: {
             ignored: ['**/storage/framework/views/**'],
         },
+        // origin pode ser ajustado se necessário para refletir o domínio de acesso
+        // origin: 'https://teste.intranet.app.br',
     },
 });
