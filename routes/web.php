@@ -18,3 +18,17 @@ Route::get('login', function () {
 
 // Catch-all route for pages
 Route::get('{slug}', [App\Http\Controllers\PageController::class, 'index'])->where('slug', '.*');
+
+// Serve storage/basset files with CORS headers
+Route::get('storage/basset/{path}', function ($path) {
+    $file = storage_path('app/public/basset/' . $path);
+    if (!file_exists($file)) {
+        abort(404);
+    }
+    $mime = mime_content_type($file);
+    $response = response()->file($file, [
+        'Access-Control-Allow-Origin' => '*',
+        'Content-Type' => $mime,
+    ]);
+    return $response;
+})->where('path', '.*');
