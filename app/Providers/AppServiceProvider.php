@@ -35,12 +35,7 @@ class AppServiceProvider extends ServiceProvider
             if (str_contains(config('app.url'), 'http://')) {
                 config(['app.url' => str_replace('http://', 'https://', config('app.url'))]);
             }
-            config(['backpack.basset.cache_map' => storage_path('app/public/basset/.basset')]);
 
-            // Garante que o disco seja o S3 (R2) em produção
-            if (!$this->app->environment('local')) {
-                config(['backpack.basset.disk' => 's3']);
-            }
             // Fix ASSET_URL in config if it is HTTP
             if (config('app.asset_url') && str_contains(config('app.asset_url'), 'http://')) {
                 config(['app.asset_url' => str_replace('http://', 'https://', config('app.asset_url'))]);
