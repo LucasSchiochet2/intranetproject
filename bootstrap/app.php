@@ -15,9 +15,11 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->trustProxies(at: '*');
         $middleware->web(append: [
             \App\Http\Middleware\CheckTenant::class,
+            \App\Http\Middleware\BassetCors::class,
         ]);
         $middleware->api(append: [
             \App\Http\Middleware\CheckTenant::class,
+            \App\Http\Middleware\BassetCors::class,
         ]);
 
         $middleware->alias([
