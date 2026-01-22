@@ -8,6 +8,6 @@ return [
      |------------------------------------------------------------------
      */
     'force_https' => true,
-    'disk' => env('BASSET_DISK', 'public'),
+    'disk' => env('BASSET_DISK', 's3'),
 
 ];
