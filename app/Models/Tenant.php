@@ -17,43 +17,38 @@ class Tenant extends Model
     {
         static::created(function ($tenant) {
             // Banners
-            Banner::factory(3)->create(['tenant_id' => $tenant->id]);
-
-            // News
-            News::factory(5)->create(['tenant_id' => $tenant->id]);
-
-            // Calendar
-            Calendar::factory(5)->create(['tenant_id' => $tenant->id]);
-
-            // Documents
-            $categories = DocumentCategory::factory(3)->create(['tenant_id' => $tenant->id]);
-            $categories->each(function ($category) use ($tenant) {
-                Documents::factory(3)->create([
-                    'document_category_id' => $category->id,
-                    'tenant_id' => $tenant->id
-                ]);
-            });
-
-            // Collaborators
-            $collaborators = Collaborators::factory(10)->create([
-                'tenant_id' => $tenant->id
+            Banner::create([
+                'tenant_id' => $tenant->id,
+                'title' => 'Bem-vindo à Intranet',
+                'subtitle' => 'Sua central de informações',
+                'image_path' => '',
+                'link' => '#',
             ]);
 
-            // Dashboards
-            $dashboards = Dashboard::factory(2)->create([
-                'tenant_id' => $tenant->id
+            Banner::create([
+                'tenant_id' => $tenant->id,
+                'title' => 'Novidades do mês',
+                'subtitle' => 'Confira as atualizações recentes',
+                'image_path' => 'https://images.unsplash.com/photo-1506744038136-46273834b3fb',
+                'link' => 'https://images.unsplash.com/photo-1506744038136-46273834b3fb',
             ]);
 
-            // Tasks
-            foreach ($dashboards as $dashboard) {
-                $dashboard->collaborators()->attach($collaborators->random(5));
+            Banner::create([
+                'tenant_id' => $tenant->id,
+                'title' => 'Eventos em destaque',
+                'subtitle' => 'Participe dos próximos eventos',
+                'image_path' => 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca',
+                'link' => 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca',
+            ]);
 
-                Task::factory(5)->create([
-                    'dashboard_id' => $dashboard->id,
-                    'collaborator_id_sender' => $collaborators->random()->id,
-                    'collaborator_id_receiver' => $collaborators->random()->id,
-                ]);
-            }
+            Banner::create([
+                'tenant_id' => $tenant->id,
+                'title' => 'Documentos importantes',
+                'subtitle' => 'Acesse os arquivos essenciais',
+                'image_path' => 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308',
+                'link' => 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308',
+            ]);
+
 
             // Menu Items
             MenuItem::create([
