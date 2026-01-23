@@ -21,4 +21,11 @@ Route::domain('{subdomain}.' . env('APP_DOMAIN'))->group(function () {
 
     // Catch-all route for pages
     Route::get('{slug}', [App\Http\Controllers\PageController::class, 'index'])->where('slug', '.*');
+    Route::get('/debug-basset', function () {
+        return [
+            'disk_configurado' => config('backpack.basset.disk'),
+                'existe_no_s3' => Storage::disk('s3')->exists('basset/.basset'),
+                'url_gerada' => Storage::disk('s3')->url('basset/.basset'),
+            ];
+    });
 });
