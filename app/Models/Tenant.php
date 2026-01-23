@@ -16,6 +16,15 @@ class Tenant extends Model
     protected static function booted()
     {
         static::created(function ($tenant) {
+            //admin
+            User::create([
+                'tenant_id' => $tenant->id,
+                'name' => 'Admin',
+                'email' => 'admin@' . $tenant->subdomain . '.localhost',
+                'password' => bcrypt('admin123'),
+                'is_admin' => true,
+            ]);
+
             // Banners
             Banner::create([
                 'tenant_id' => $tenant->id,
