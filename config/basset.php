@@ -8,6 +8,8 @@ return [
      |------------------------------------------------------------------
      */
     'force_https' => true,
-    'disk' => env('BASSET_DISK', 'public'),
+    // config/backpack/basset.php
+    'disk' => env('BASSET_DISK', 'public'), // Garanta que lê do .env
+    'cache_path' => 'basset',               // O caminho dentro do bucket
 
 ];
