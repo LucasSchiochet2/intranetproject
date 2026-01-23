@@ -53,11 +53,16 @@ return [
             'secret' => env('AWS_SECRET_ACCESS_KEY'),
             'region' => env('AWS_DEFAULT_REGION'),
             'bucket' => env('AWS_BUCKET'),
+            // URL pública do bucket (ex: https://pub-xxxxxx.r2.dev)
             'url' => env('AWS_URL'),
-            'endpoint' => env('AWS_ENDPOINT'), // <--- ESSA LINHA É CRUCIAL PARA O R2
-            'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
-            'throw' => false,
-            'visibility' => 'private', // Força privado para evitar erro de ACL no R2
+            // Endpoint interno do R2 (ex: https://xxxxxx.r2.cloudflarestorage.com/BUCKET)
+            'endpoint' => env('AWS_ENDPOINT'),
+            // Para Cloudflare R2, deve ser true
+            'use_path_style_endpoint' => true,
+            // Para mostrar erros de fato
+            'throw' => true,
+            // Visibilidade privada (ou public se preferir, mas R2 não suporta ACL)
+            'visibility' => 'private',
         ],
 
     ],
