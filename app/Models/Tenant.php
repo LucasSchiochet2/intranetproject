@@ -2,9 +2,13 @@
 
 namespace App\Models;
 
+
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Banner;
+use App\Models\MenuItem;
+use App\Models\User;
 
 class Tenant extends Model
 {
@@ -20,44 +24,52 @@ class Tenant extends Model
             User::create([
                 'tenant_id' => $tenant->id,
                 'name' => 'Admin',
-                'email' => 'admin@' . $tenant->subdomain . '.localhost',
+                'email' => 'admin@' . $tenant->id . '.example.com',
                 'password' => bcrypt('admin123'),
                 'is_admin' => true,
             ]);
 
             // Banners
-            Banner::create([
-                'tenant_id' => $tenant->id,
-                'title' => 'Bem-vindo à Intranet',
-                'subtitle' => 'Sua central de informações',
-                'image_path' => '',
-                'link' => '#',
-            ]);
 
-            Banner::create([
-                'tenant_id' => $tenant->id,
-                'title' => 'Novidades do mês',
-                'subtitle' => 'Confira as atualizações recentes',
-                'image_path' => 'https://images.unsplash.com/photo-1506744038136-46273834b3fb',
-                'link' => 'https://images.unsplash.com/photo-1506744038136-46273834b3fb',
-            ]);
 
-            Banner::create([
-                'tenant_id' => $tenant->id,
-                'title' => 'Eventos em destaque',
-                'subtitle' => 'Participe dos próximos eventos',
-                'image_path' => 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca',
-                'link' => 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca',
-            ]);
+                Banner::create([
+                    'tenant_id' => $tenant->id,
+                    'title' => 'Bem-vindo à Intranet',
+                    'subtitle' => 'Sua central de informações',
+                    'image_path' => '',
+                    'image_url' => '',
+                    'link' => '#'
+                ]);
 
-            Banner::create([
-                'tenant_id' => $tenant->id,
-                'title' => 'Documentos importantes',
-                'subtitle' => 'Acesse os arquivos essenciais',
-                'image_path' => 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308',
-                'link' => 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308',
-            ]);
 
+                Banner::create([
+                    'tenant_id' => $tenant->id,
+                    'title' => 'Novidades do mês',
+                    'subtitle' => 'Confira as atualizações recentes',
+                    'image_path' => 'https://images.unsplash.com/photo-1506744038136-46273834b3fb',
+                    'image_url' => '',
+                    'link' => 'https://images.unsplash.com/photo-1506744038136-46273834b3fb'
+                ]);
+
+
+                Banner::create([
+                    'tenant_id' => $tenant->id,
+                    'title' => 'Eventos em destaque',
+                    'subtitle' => 'Participe dos próximos eventos',
+                    'image_path' => 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca',
+                    'image_url' => '',
+                    'link' => 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca'
+                ]);
+
+
+                Banner::create([
+                    'tenant_id' => $tenant->id,
+                    'title' => 'Documentos importantes',
+                    'subtitle' => 'Acesse os arquivos essenciais',
+                    'image_path' => 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308',
+                    'image_url' => '',
+                    'link' => 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308'
+                ]);
 
             // Menu Items
             MenuItem::create([
