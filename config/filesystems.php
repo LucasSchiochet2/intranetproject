@@ -51,18 +51,13 @@ return [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
             'secret' => env('AWS_SECRET_ACCESS_KEY'),
-            'region' => env('AWS_DEFAULT_REGION'),
+            'region' => env('AWS_DEFAULT_REGION', 'auto'), // R2 prefere 'auto'
             'bucket' => env('AWS_BUCKET'),
-            // URL pública do bucket (ex: https://pub-xxxxxx.r2.dev)
             'url' => env('AWS_URL'),
-            // Endpoint interno do R2 (ex: https://xxxxxx.r2.cloudflarestorage.com/BUCKET)
             'endpoint' => env('AWS_ENDPOINT'),
-            // Para Cloudflare R2, deve ser true
             'use_path_style_endpoint' => true,
-            // Para mostrar erros de fato
             'throw' => true,
-            // Visibilidade privada (ou public se preferir, mas R2 não suporta ACL)
-            'visibility' => 'private',
+            'visibility' => 'private', // Mantenha private para R2
         ],
 
     ],
