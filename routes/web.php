@@ -7,10 +7,9 @@ Storage::disk('s3')->put('basset/.basset', '');
 Storage::disk('public')->put('basset/.basset', '');
 Storage::disk('local')->put('basset/.basset', '');
 // Registration Routes (subdomain aware)
+Route::get('register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'register']);
 Route::domain('{subdomain}.' . env('APP_DOMAIN'))->group(function () {
-    Route::get('register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
-    Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'register']);
-
     Route::middleware(['auth'])->group(function () {
         Route::redirect('/', '/admin/dashboard')->name('home');
     });
