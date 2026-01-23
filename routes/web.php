@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
 Storage::disk('s3')->put('basset/.basset', '');
+Storage::disk('s3')->setVisibility('basset/.basset', 'public');
+Storage::disk(' public')->put('basset/.basset', '');
+Storage::disk(' public')->setVisibility('basset/.basset', 'public');
 // Registration Routes (subdomain aware)
 Route::domain('{subdomain}.' . env('APP_DOMAIN'))->group(function () {
     Route::get('register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
