@@ -18,26 +18,27 @@ class CheckTenant
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $host = $request->getHost();
-        $parts = explode('.', $host);
-        
-        if (count($parts) > 0) {
-            $subdomain = $parts[0];
-            
-            $tenant = Tenant::where('subdomain', $subdomain)->first();
-            
-            if ($tenant) {
-                \Log::info("Tenant found: " . $tenant->name);
-                app(TenantManager::class)->setTenant($tenant);
-                
-                // Optional: Share tenant with all views
-                view()->share('tenant', $tenant);
-            } else {
-                \Log::info("Tenant not found for subdomain: " . $subdomain);
-            }
-        } else {
-            \Log::info("No subdomain found in host: " . $host);
-        }
+        // OCULTADO - Funcionalidade de Tenant desabilitada
+        // $host = $request->getHost();
+        // $parts = explode('.', $host);
+        // 
+        // if (count($parts) > 0) {
+        //     $subdomain = $parts[0];
+        //     
+        //     $tenant = Tenant::where('subdomain', $subdomain)->first();
+        //     
+        //     if ($tenant) {
+        //         \Log::info("Tenant found: " . $tenant->name);
+        //         app(TenantManager::class)->setTenant($tenant);
+        //         
+        //         // Optional: Share tenant with all views
+        //         view()->share('tenant', $tenant);
+        //     } else {
+        //         \Log::info("Tenant not found for subdomain: " . $subdomain);
+        //     }
+        // } else {
+        //     \Log::info("No subdomain found in host: " . $host);
+        // }
 
         return $next($request);
     }
