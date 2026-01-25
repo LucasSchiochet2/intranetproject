@@ -4,9 +4,10 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
 Route::view('/','welcome')->name('welcome');
-Route::middleware(['auth'])->group(function () {
-    Route::redirect('/', '/admin/dashboard')->name('home');
-});
+
+// Route::middleware(['auth'])->group(function () {
+//     Route::redirect('/', '/admin/dashboard')->name('home');
+// });
 
 Route::get('login', function () {
     return redirect()->route('backpack.auth.login');
