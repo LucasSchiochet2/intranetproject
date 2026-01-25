@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\PageController;
 use App\Http\Controllers\Api\OmbudsmanController;
 use App\Http\Controllers\Api\MenuController;
 use App\Http\Controllers\Api\CollaboratorAuthController;
+use App\Http\Controllers\Api\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,9 @@ use App\Http\Controllers\Api\CollaboratorAuthController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Global search endpoint
+Route::get('/search', [SearchController::class, 'search']);
 
 // Public GET routes
 Route::get('/news', [NewsController::class, 'index']);
