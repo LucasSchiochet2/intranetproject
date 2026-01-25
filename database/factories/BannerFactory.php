@@ -18,7 +18,7 @@ class BannerFactory extends Factory
     public function definition(): array
     {
         return [
-            'tenant_id' => Tenant::factory(),
+            'tenant_id' => null,
             'title' => $this->faker->sentence(3),
             'description' => $this->faker->sentence(8),
             'image_url' => 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&q=80', // Office placeholder

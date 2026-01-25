@@ -19,7 +19,7 @@ class DocumentsFactory extends Factory
     public function definition(): array
     {
         return [
-            'tenant_id' => Tenant::factory(),
+            'tenant_id' => null,
             'title' => $this->faker->sentence(4),
             'description' => $this->faker->paragraph,
             'files' => ['https://pdfobject.com/pdf/sample.pdf'], // Generic external PDF

@@ -31,7 +31,7 @@ class NewsFactory extends Factory
         ];
 
         return [
-            'tenant_id' => Tenant::factory(),
+            'tenant_id' => null,
             'title' => $title,
             'slug' => Str::slug($title),
             'content' => $this->faker->paragraphs(3, true),

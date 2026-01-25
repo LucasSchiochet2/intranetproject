@@ -21,7 +21,7 @@ class DocumentCategoryFactory extends Factory
     {
         $name = $this->faker->word;
         return [
-            'tenant_id' => Tenant::factory(),
+            'tenant_id' => null,
             'name' => $name,
             'slug' => Str::slug($name),
         ];

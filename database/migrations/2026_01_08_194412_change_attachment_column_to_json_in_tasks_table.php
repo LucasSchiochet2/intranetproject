@@ -2,8 +2,8 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
@@ -12,8 +12,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        DB::statement('ALTER TABLE tasks ALTER COLUMN attachment TYPE json USING attachment::json');
-        DB::statement('ALTER TABLE tasks ALTER COLUMN attachment DROP NOT NULL');
+        if (DB::getDriverName() === 'pgsql') {
+            DB::statement('ALTER TABLE tasks ALTER COLUMN attachment TYPE json USING attachment::json');
+            DB::statement('ALTER TABLE tasks ALTER COLUMN attachment DROP NOT NULL');
+        } else {
+            Schema::table('tasks', function (Blueprint $table) {
+                $table->json('attachment')->nullable()->change();
+            });
+        }
     }
 
     /**
@@ -21,6 +27,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        DB::statement('ALTER TABLE tasks ALTER COLUMN attachment TYPE varchar(255) USING attachment::varchar');
+        Schema::table('tasks', function (Blueprint $table) {
+            $table->string('attachment', 255)->nullable()->change();
+        });
     }
 };

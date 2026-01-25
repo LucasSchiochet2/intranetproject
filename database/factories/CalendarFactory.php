@@ -19,7 +19,7 @@ class CalendarFactory extends Factory
     {
         $start = $this->faker->dateTimeBetween('now', '+1 month');
         return [
-            'tenant_id' => Tenant::factory(),
+            'tenant_id' => null,
             'title' => $this->faker->sentence(3),
             'description' => $this->faker->paragraph,
             'start_date' => $start,

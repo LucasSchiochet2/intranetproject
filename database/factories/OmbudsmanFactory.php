@@ -19,7 +19,7 @@ class OmbudsmanFactory extends Factory
     public function definition(): array
     {
         return [
-            'tenant_id' => Tenant::factory(),
+            'tenant_id' => null,
             'name' => $this->faker->name,
             'email' => $this->faker->email,
             'type' => $this->faker->randomElement(['complaint', 'suggestion', 'compliment']),

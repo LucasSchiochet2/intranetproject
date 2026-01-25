@@ -18,7 +18,7 @@ class DashboardFactory extends Factory
     public function definition(): array
     {
         return [
-            'tenant_id' => Tenant::factory(),
+            'tenant_id' => null,
             'name' => $this->faker->words(3, true),
             'description' => $this->faker->sentence,
         ];
