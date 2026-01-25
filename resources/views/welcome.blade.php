@@ -33,9 +33,6 @@
                         <a href="{{ route('backpack.auth.login') }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors">
                             Entrar
                         </a>
-                        <a href="{{ route('register') }}" class="ml-4 inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors">
-                            Criar Conta
-                        </a>
                     @endauth
                 </div>
             </div>
@@ -68,11 +65,6 @@
                                 @else
                                     <a href="{{ route('backpack.auth.login') }}" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg">
                                         Fazer Login
-                                    </a>
-                                </div>
-                                <div class="rounded-md shadow">
-                                    <a href="{{ route('register') }}" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg">
-                                        Criar Conta
                                     </a>
                                 @endauth
                             </div>
@@ -189,11 +181,11 @@
     <div id="about" class="bg-indigo-700">
         <div class="max-w-2xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
             <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
-                <span class="block">Pronto para começar?</span>
-                <span class="block">Acesse a plataforma agora.</span>
+                <span class="block">Interessado em contratar?</span>
+                <span class="block">Entre em contato conosco!</span>
             </h2>
             <p class="mt-4 text-lg leading-6 text-indigo-200">
-                Otimize a comunicação e organização da sua equipe com nossa intranet.
+                Para acessar a plataforma ou conhecer nossos planos, conecte-se conosco via WhatsApp.
             </p>
             <div class="mt-8 flex justify-center">
                 <div class="inline-flex rounded-md shadow">
@@ -202,8 +194,8 @@
                             Ir para o Painel
                         </a>
                      @else
-                        <a href="{{ route('backpack.auth.login') }}" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50">
-                            Entrar
+                        <a href="https://wa.me/5585987654321" target="_blank" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50">
+                            💬 Contato WhatsApp
                         </a>
                     @endauth
                 </div>
