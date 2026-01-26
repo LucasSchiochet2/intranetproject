@@ -29,6 +29,7 @@ class DocumentsRequest extends FormRequest
             'document_category_id' => 'required|exists:document_categories,id',
             'description' => 'nullable',
             'files' => 'nullable',
+            'collaborator_id' => 'nullable|exists:collaborators,id',
         ];
     }
 
@@ -44,6 +45,7 @@ class DocumentsRequest extends FormRequest
             'document_category_id' => 'categoria',
             'description' => 'descrição',
             'files' => 'arquivos',
+            'collaborator_id' => 'colaborador',
         ];
     }
 

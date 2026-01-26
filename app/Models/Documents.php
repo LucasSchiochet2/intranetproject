@@ -13,7 +13,7 @@ class Documents extends Model
     use HasFactory;
     use BelongsToTenant; // ocultado por solicitação
 
-    protected $fillable = ['document_category_id', 'title', 'description', 'files'];
+    protected $fillable = ['document_category_id', 'title', 'description', 'files', 'collaborator_id'];
 
     protected $casts = [
         'files' => 'array',
