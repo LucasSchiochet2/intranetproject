@@ -34,11 +34,30 @@ class DocumentsController extends Controller
 
     public function show_by_category($category)
     {
+
         $documents = Documents::with('category')
-            ->whereHas('category', function ($query) use ($category) {
-                $query->where('id', $category)
-                      ->orWhere('slug', $category);
+            ->where(function($q) use ($category) {
+                $q->where(function($sub) use ($category) {
+                    $sub->where('document_category_id', $category)
+                         ->orWhereHas('category', function($cat) use ($category) {
+                             $cat->where('slug', $category);
+                         });
+                })
+                ->where(function($sub) {
+                    $sub->where('collaborator_id', backpack_user()->id)
+                         ->orWhereNull('collaborator_id');
+                });
             })
+            ->latest()
+            ->get();
+
+        return response()->json($documents);
+    }
+
+    public function collaboratorDocuments($collaboratorId)
+    {
+        $documents = Documents::with('category')
+            ->where('collaborator_id', $collaboratorId)
             ->latest()
             ->get();
 

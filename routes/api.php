@@ -42,6 +42,7 @@ Route::get('/documents/search', [DocumentsController::class, 'search']);
 Route::get('/documents/categories', [DocumentsController::class, 'getCategories']);
 Route::get('/documents/category/{category}', [DocumentsController::class, 'show_by_category']);
 Route::get('/documents/{id}', [DocumentsController::class, 'show']);
+Route::get('/documents/collaborator/{collaboratorId}', [DocumentsController::class, 'collaboratorDocuments']);
 
 Route::get('/pages', [PageController::class, 'index']);
 Route::get('/pages/{slug}', [PageController::class, 'show']);
