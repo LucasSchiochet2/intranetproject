@@ -17,7 +17,7 @@ class MenuSeeder extends Seeder
 
         // Menu Items
             MenuItem::create([
-                
+
                 'name' => 'Início',
                 'type' => 'internal_link',
                 'link' => '/',
@@ -26,7 +26,7 @@ class MenuSeeder extends Seeder
             ]);
 
             MenuItem::create([
-                
+
                 'name' => 'Notícias',
                 'type' => 'internal_link',
                 'link' => 'noticias',
@@ -35,7 +35,7 @@ class MenuSeeder extends Seeder
             ]);
 
             MenuItem::create([
-                
+
                 'name' => 'Calendário',
                 'type' => 'internal_link',
                 'link' => 'calendario',
@@ -44,7 +44,7 @@ class MenuSeeder extends Seeder
             ]);
 
             MenuItem::create([
-                
+
                 'name' => 'Tarefas',
                 'type' => 'internal_link',
                 'link' => 'tarefas',
@@ -53,7 +53,7 @@ class MenuSeeder extends Seeder
             ]);
 
             $docs = MenuItem::create([
-                
+
                 'name' => 'Documentos',
                 'type' => 'internal_link',
                 'link' => '#',
@@ -62,8 +62,8 @@ class MenuSeeder extends Seeder
             ]);
 
             MenuItem::create([
-                
-                'name' => 'Políticas',
+
+                'name' => 'Manuais',
                 'type' => 'internal_link',
                 'icon' => 'las la-file-alt',
                 'link' => 'documentos',
@@ -71,16 +71,16 @@ class MenuSeeder extends Seeder
             ]);
 
             MenuItem::create([
-                
-                'name' => 'Manuais',
+
+                'name' => 'Pessoais',
                 'type' => 'internal_link',
                 'icon' => 'las la-book',
-                'link' => '#',
+                'link' => '/documents/pessoais',
                 'parent_id' => $docs->id,
             ]);
 
             MenuItem::create([
-                
+
                 'name' => 'Ouvidoria',
                 'type' => 'internal_link',
                 'icon' => 'las la-comments',
@@ -90,7 +90,7 @@ class MenuSeeder extends Seeder
 
             // Last Access
             MenuItem::create([
-                
+
                 'name' => 'Portal RH',
                 'type' => 'internal_link',
                 'link' => '#',
@@ -100,7 +100,7 @@ class MenuSeeder extends Seeder
             ]);
 
             MenuItem::create([
-                
+
                 'name' => 'Suporte TI',
                 'type' => 'internal_link',
                 'link' => '#',
@@ -111,7 +111,7 @@ class MenuSeeder extends Seeder
 
             // Links
             MenuItem::create([
-                
+
                 'name' => 'Google',
                 'type' => 'external_link',
                 'link' => 'https://google.com',
@@ -121,7 +121,7 @@ class MenuSeeder extends Seeder
             ]);
 
             MenuItem::create([
-                
+
                 'name' => 'LinkedIn',
                 'type' => 'external_link',
                 'link' => 'https://linkedin.com',
