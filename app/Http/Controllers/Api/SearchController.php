@@ -47,14 +47,14 @@ class SearchController extends Controller
         $calendarResults = Calendar::where('title', 'like', "%{$query}%")
             ->orWhere('description', 'like', "%{$query}%")
             ->limit(5)
-            ->get(['id', 'title', 'description', 'event_date'])
+            ->get(['id', 'title', 'description', 'end_date'])
             ->map(function ($item) {
                 return [
                     'type' => 'calendar',
                     'id' => $item->id,
                     'title' => $item->title,
                     'preview' => substr($item->description, 0, 100) . '...',
-                    'event_date' => $item->event_date,
+                    'end_date' => $item->end_date,
                 ];
             });
 
