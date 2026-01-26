@@ -10,7 +10,15 @@ class DocumentsController extends Controller
 {
     public function index()
     {
-        return response()->json(Documents::with('category')->latest()->paginate(20));
+        return response()->json(
+            Documents::with('category')
+                ->where(function($query) {
+                    $query->where('collaborator_id', backpack_user()->id)
+                          ->orWhereNull('collaborator_id');
+                })
+                ->latest()
+                ->paginate(20)
+        );
     }
 
     public function show($id)

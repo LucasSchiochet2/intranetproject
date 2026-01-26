@@ -21,7 +21,7 @@ class DocumentsCrudController extends CrudController
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
-     * 
+     *
      * @return void
      */
     public function setup()
@@ -46,7 +46,7 @@ class DocumentsCrudController extends CrudController
 
     /**
      * Define what happens when the List operation is loaded.
-     * 
+     *
      * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
      * @return void
      */
@@ -59,7 +59,7 @@ class DocumentsCrudController extends CrudController
 
     /**
      * Define what happens when the Create operation is loaded.
-     * 
+     *
      * @see https://backpackforlaravel.com/docs/crud-operation-create
      * @return void
      */
@@ -68,7 +68,13 @@ class DocumentsCrudController extends CrudController
         CRUD::setValidation(DocumentsRequest::class);
 
         CRUD::field('title')->label('Título');
-        CRUD::field('document_category_id')->label('Categoria')->type('select')->entity('category')->attribute('name')->model('App\Models\DocumentCategory');
+        CRUD::field('document_category_id')->label('Categoria')->type('select')->entity('category')->attribute('name')->model('App\\Models\\DocumentCategory');
+        CRUD::field('collaborator_id')
+            ->type('select')
+            ->label('Colaborador')
+            ->entity('collaborator')
+            ->attribute('name')
+            ->model('App\\Models\\Collaborators');
         CRUD::field('description')->label('Descrição')->type('summernote');
         CRUD::field('files')->label('Arquivos')->type('upload_multiple')->upload(true);
     }
@@ -85,7 +91,7 @@ class DocumentsCrudController extends CrudController
 
     /**
      * Define what happens when the Update operation is loaded.
-     * 
+     *
      * @see https://backpackforlaravel.com/docs/crud-operation-update
      * @return void
      */

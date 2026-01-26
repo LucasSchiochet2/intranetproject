@@ -23,7 +23,10 @@ class Documents extends Model
     {
         return $this->belongsTo(DocumentCategory::class, 'document_category_id');
     }
-
+    public function collaborator()
+    {
+        return $this->belongsTo(Collaborators::class, 'collaborator_id');
+    }
     public function setFilesAttribute($value)
     {
         $attribute_name = "files";
