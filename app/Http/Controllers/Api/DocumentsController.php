@@ -12,10 +12,7 @@ class DocumentsController extends Controller
     {
         return response()->json(
             Documents::with('category')
-                ->where(function($query) {
-                    $query->where('collaborator_id', backpack_user()->id)
-                          ->orWhereNull('collaborator_id');
-                })
+                ->whereNull('collaborator_id')
                 ->latest()
                 ->paginate(20)
         );
@@ -37,17 +34,12 @@ class DocumentsController extends Controller
 
         $documents = Documents::with('category')
             ->where(function($q) use ($category) {
-                $q->where(function($sub) use ($category) {
-                    $sub->where('document_category_id', $category)
-                         ->orWhereHas('category', function($cat) use ($category) {
-                             $cat->where('slug', $category);
-                         });
-                })
-                ->where(function($sub) {
-                    $sub->where('collaborator_id', backpack_user()->id)
-                         ->orWhereNull('collaborator_id');
-                });
+                $q->where('document_category_id', $category)
+                  ->orWhereHas('category', function($cat) use ($category) {
+                      $cat->where('slug', $category);
+                  });
             })
+            ->whereNull('collaborator_id')
             ->latest()
             ->get();
 
