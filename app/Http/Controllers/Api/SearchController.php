@@ -59,15 +59,15 @@ class SearchController extends Controller
             });
 
         // Search in Documents
-        $documentResults = Documents::where('name', 'like', "%{$query}%")
+        $documentResults = Documents::where('title', 'like', "%{$query}%")
             ->orWhere('description', 'like', "%{$query}%")
             ->limit(5)
-            ->get(['id', 'name', 'description', 'document_category_id'])
+            ->get(['id', 'title', 'description', 'document_category_id'])
             ->map(function ($item) {
                 return [
                     'type' => 'document',
                     'id' => $item->id,
-                    'title' => $item->name,
+                    'title' => $item->title,
                     'preview' => substr($item->description ?? '', 0, 100) . '...',
                     'category_id' => $item->document_category_id,
                 ];
