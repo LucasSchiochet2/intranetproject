@@ -127,7 +127,7 @@ class DashboardController extends Controller
      */
     public function show(string $id)
     {
-        $dashboard = Dashboard::find($id)->with('tasks');
+        $dashboard = Dashboard::with(['collaborators', 'tasks'])->find($id);
 
         if (!$dashboard) {
             return response()->json(['message' => 'Dashboard not found'], 404);
