@@ -43,7 +43,7 @@ class CollaboratorAuthController extends Controller
     }
     public function getCollaborators()
     {
-        $collaborators = Collaborators::get(['id', 'name', 'email']);
+        $collaborators = Collaborators::all();
         return response()->json([
             'collaborators' => $collaborators,
         ]);
