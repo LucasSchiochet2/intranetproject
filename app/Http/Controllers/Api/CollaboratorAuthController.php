@@ -43,7 +43,7 @@ class CollaboratorAuthController extends Controller
     }
     public function getCollaborators()
     {
-        $collaborators = Collaborators::all();
+        $collaborators = Collaborators::all()->makeHidden(['password']);
         return response()->json([
             'collaborators' => $collaborators,
         ]);
